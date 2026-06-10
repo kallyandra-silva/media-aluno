@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Situação Escolar</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="wrapper">
+  <header>
+    <div class="logo-icon">🎓</div>
+    <h1>Situação Escolar</h1>
+    <p class="subtitle">Calcule a média e verifique a situação do aluno</p>
+  </header>
+
+  <div class="card">
+    <div class="field" id="field-nome">
+      <label for="nome">Nome do aluno</label>
+      <input type="text" id="nome" placeholder="Ex: João da Silva" autocomplete="off"/>
+      <span class="error-msg">Informe o nome do aluno.</span>
+    </div>
+
+    <div class="row-2">
+      <div class="field" id="field-n1">
+        <label for="n1">Nota 1</label>
+        <input type="number" id="n1" placeholder="0 - 10" min="0" max="10" step="0.1"/>
+        <span class="error-msg">Valor inválido.</span>
+      </div>
+      <div class="field" id="field-n2">
+        <label for="n2">Nota 2</label>
+        <input type="number" id="n2" placeholder="0 - 10" min="0" max="10" step="0.1"/>
+        <span class="error-msg">Valor inválido.</span>
+      </div>
+    </div>
+
+    <div class="field" id="field-freq">
+      <label for="freq">Frequência (%)</label>
+      <input type="number" id="freq" placeholder="0 - 100" min="0" max="100" step="0.1"/>
+      <p class="input-hint">Mínimo de 75% para aprovação ou recuperação</p>
+      <span class="error-msg">Valor inválido.</span>
+    </div>
+
+    <hr class="divider"/>
+
+    <button class="btn" onclick="calcular()">Calcular Situação</button>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="status-icon" id="statusIcon"></div>
+      <div>
+        <div class="result-name" id="resultName"></div>
+        <div class="result-status" id="resultStatus"></div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="stat">
+        <div class="stat-label">Média Final</div>
+        <div class="stat-value" id="statMedia"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Frequência</div>
+        <div class="stat-value" id="statFreq"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="criteria-note">
+    <span><span class="dot" style="background:var(--green)"></span>Aprovado: M ≥ 7,0 e freq ≥ 75%</span>
+    <span><span class="dot" style="background:var(--yellow)"></span>Recuperação: 5 ≤ M &lt; 7 e freq ≥ 75%</span>
+    <span><span class="dot" style="background:var(--red)"></span>Reprovado: demais casos</span>
+  </p>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
